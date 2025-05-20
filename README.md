@@ -31,3 +31,41 @@ As of now, the SPIFFS uploader plugin is not directly compatible with Arduino ID
 
 
 The index.html file served by the ESP provides a user-friendly interface to control the lamp. By accessing the ESP's IP address in a browser, users can toggle the lamp's state with a simple click.
+
+
+
+🧰 Components Required
+NodeMCU (ESP8266)
+
+RF Receiver Module (e.g., 433MHz)
+
+Relay Module (for controlling the lamp)
+
+Lamp or LED + resistor (optional for testing)
+
+Breadboard and Jumper Wires
+
+Power Supply (via USB or 5V adapter)
+
+🔌 Wiring Description
+| ESP8266 Pin    | Connected To                | Purpose                      |
+| -------------- | --------------------------- | ---------------------------- |
+| **D1 (GPIO5)** | Relay IN                    | Control lamp (LED output)    |
+| **D2 (GPIO4)** | RF Receiver OUT             | Detect signal from RF remote |
+| **3V3**        | RF Receiver VCC             | Power RF receiver            |
+| **GND**        | RF Receiver GND + Relay GND | Common ground                |
+| **VIN**        | Relay VCC                   | Power relay (if 5V relay)    |
+
+
+⚠️ Note: Use a transistor + flyback diode if you’re driving a mechanical relay directly and it draws more than the ESP’s pin can handle. You can also use a logic convertor but transitor should be fine
+
+⚡ Relay Wiring (to control the lamp)
+If you’re controlling a lamp connected to AC mains, follow strict safety precautions and preferably use an opto-isolated relay module.
+
+COM of the relay → Live wire from AC
+
+NO (Normally Open) → Live wire to lamp
+
+Neutral wire connects directly to the lamp
+
+For safety, don’t work with mains AC unless you're experienced. You can test your circuit with a 5V LED strip or a low-voltage lamp first.
